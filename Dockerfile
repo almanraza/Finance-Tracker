@@ -13,7 +13,6 @@ COPY . .
 
 RUN mkdir -p logs
 
-# Railway injects $PORT — default 8000 for local
 EXPOSE 8000
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
