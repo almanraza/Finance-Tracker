@@ -1,0 +1,73 @@
+2026-06-20 11:55:39 | INFO     | app.core.logging:setup_logging:34 | Logging initialized | ENV=development
+2026-06-20 11:57:36 | INFO     | app.core.logging:setup_logging:34 | Logging initialized | ENV=development
+2026-06-20 11:58:47 | INFO     | app.main:log_requests:50 | → GET /health
+2026-06-20 11:58:47 | INFO     | app.main:log_requests:52 | ← 200 /health
+2026-06-20 11:58:48 | INFO     | app.main:log_requests:50 | → GET /favicon.ico
+2026-06-20 11:58:48 | INFO     | app.main:log_requests:52 | ← 404 /favicon.ico
+2026-06-20 11:58:55 | INFO     | app.main:log_requests:50 | → GET /docs
+2026-06-20 11:58:55 | INFO     | app.main:log_requests:52 | ← 200 /docs
+2026-06-20 11:58:57 | INFO     | app.main:log_requests:50 | → GET /openapi.json
+2026-06-20 11:58:57 | INFO     | app.main:log_requests:52 | ← 200 /openapi.json
+2026-06-20 12:25:18 | INFO     | app.main:log_requests:50 | → GET /health
+2026-06-20 12:25:19 | INFO     | app.main:log_requests:52 | ← 200 /health
+2026-06-20 12:37:13 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/register
+2026-06-20 12:37:21 | ERROR    | app.core.database:get_db:27 | Database session error: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-06-20 12:37:21 | ERROR    | app.main:global_exception_handler:58 | Unhandled error on /api/v1/auth/register: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-06-20 12:59:29 | INFO     | app.core.logging:setup_logging:34 | Logging initialized | ENV=development
+2026-06-20 12:59:40 | INFO     | app.main:log_requests:50 | → GET /health
+2026-06-20 12:59:40 | INFO     | app.main:log_requests:52 | ← 200 /health
+2026-06-20 12:59:41 | INFO     | app.main:log_requests:50 | → GET /docs
+2026-06-20 12:59:41 | INFO     | app.main:log_requests:52 | ← 200 /docs
+2026-06-20 12:59:42 | INFO     | app.main:log_requests:50 | → GET /openapi.json
+2026-06-20 12:59:42 | INFO     | app.main:log_requests:52 | ← 200 /openapi.json
+2026-06-20 13:00:02 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/register
+2026-06-20 13:00:04 | INFO     | app.routes.auth:register:31 | New user registered: alman@gmail.com
+2026-06-20 13:00:04 | INFO     | app.main:log_requests:52 | ← 201 /api/v1/auth/register
+2026-06-20 13:00:14 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/summary
+2026-06-20 13:00:14 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:14 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:14 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/summary
+2026-06-20 13:00:15 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/
+2026-06-20 13:00:15 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:15 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:15 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/
+2026-06-20 13:00:15 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/budgets/
+2026-06-20 13:00:15 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:15 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:15 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/budgets/
+2026-06-20 13:00:16 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/
+2026-06-20 13:00:16 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:16 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:16 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/
+2026-06-20 13:00:17 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/summary
+2026-06-20 13:00:17 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:17 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:17 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/summary
+2026-06-20 13:00:18 | INFO     | app.main:log_requests:50 | → GET /api/v1/expenses/budgets/
+2026-06-20 13:00:18 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:18 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:18 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/expenses/budgets/
+2026-06-20 13:00:20 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:20 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:20 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:20 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
+2026-06-20 13:00:21 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:21 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:21 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:21 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
+2026-06-20 13:00:22 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:22 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:22 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:22 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
+2026-06-20 13:00:25 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:25 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:25 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:25 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
+2026-06-20 13:00:30 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:30 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:30 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:30 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
+2026-06-20 13:00:31 | INFO     | app.main:log_requests:50 | → POST /api/v1/auth/refresh
+2026-06-20 13:00:32 | WARNING  | app.core.security:decode_token:50 | JWT decode failed: Subject must be a string.
+2026-06-20 13:00:32 | ERROR    | app.core.database:get_db:27 | Database session error: 401: Invalid or expired token
+2026-06-20 13:00:32 | INFO     | app.main:log_requests:52 | ← 401 /api/v1/auth/refresh
