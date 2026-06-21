@@ -15,7 +15,6 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 
 @router.post("/register", response_model=TokenResponse, status_code=201)
 def register(payload: UserRegister, db: Session = Depends(get_db)):
-    # Check duplicate email
     if db.query(User).filter(User.email == payload.email).first():
         raise HTTPException(status_code=409, detail="Email already registered")
 
@@ -30,8 +29,8 @@ def register(payload: UserRegister, db: Session = Depends(get_db)):
 
     logger.info(f"New user registered: {user.email}")
 
-    access_token = create_access_token({"sub": user.id})
-    refresh_token = create_refresh_token({"sub": user.id})
+    access_token = create_access_token({"sub": str(user.id)})
+    refresh_token = create_refresh_token({"sub": str(user.id)})
 
     return TokenResponse(
         access_token=access_token,
@@ -54,8 +53,8 @@ def login(payload: UserLogin, db: Session = Depends(get_db)):
     logger.info(f"User logged in: {user.email}")
 
     return TokenResponse(
-        access_token=create_access_token({"sub": user.id}),
-        refresh_token=create_refresh_token({"sub": user.id}),
+        access_token=create_access_token({"sub": str(user.id)}),
+        refresh_token=create_refresh_token({"sub": str(user.id)}),
         user=UserResponse.model_validate(user),
     )
 
@@ -67,12 +66,16 @@ def refresh_token(payload: RefreshRequest, db: Session = Depends(get_db)):
     if token_data.get("type") != "refresh":
         raise HTTPException(status_code=401, detail="Invalid refresh token")
 
-    user = db.query(User).filter(User.id == token_data.get("sub")).first()
+    user_id_str = token_data.get("sub")
+    if not user_id_str:
+        raise HTTPException(status_code=401, detail="Invalid refresh token")
+
+    user = db.query(User).filter(User.id == int(user_id_str)).first()
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
 
     return TokenResponse(
-        access_token=create_access_token({"sub": user.id}),
-        refresh_token=create_refresh_token({"sub": user.id}),
+        access_token=create_access_token({"sub": str(user.id)}),
+        refresh_token=create_refresh_token({"sub": str(user.id)}),
         user=UserResponse.model_validate(user),
     )

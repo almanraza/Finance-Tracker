@@ -9,7 +9,6 @@ from app.core.config import settings
 from app.core.database import get_db
 from loguru import logger
 
-from passlib.context import CryptContext
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto", bcrypt__rounds=12)
 
@@ -64,9 +63,14 @@ def get_current_user(
     from app.models.user import User  # avoid circular import
 
     payload = decode_token(token)
-    user_id: int = payload.get("sub")
+    user_id_str = payload.get("sub")
 
-    if not user_id:
+    if not user_id_str:
+        raise HTTPException(status_code=401, detail="Invalid token payload")
+
+    try:
+        user_id = int(user_id_str)  # convert string back to int for DB query
+    except (ValueError, TypeError):
         raise HTTPException(status_code=401, detail="Invalid token payload")
 
     user = db.query(User).filter(User.id == user_id).first()
